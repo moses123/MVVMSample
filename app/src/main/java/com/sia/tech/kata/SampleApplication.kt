@@ -6,7 +6,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class TechKataApplication : Application(), HasAndroidInjector {
+class SampleApplication : Application(), HasAndroidInjector {
 
     val appComponent: ApplicationComponent by lazy {
         DaggerApplicationComponent.factory().create(applicationContext)

@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sia.tech.kata.R
-import com.sia.tech.kata.TechKataApplication
+import com.sia.tech.kata.SampleApplication
 import com.sia.tech.kata.currency.CurrencyActivity
 import com.sia.tech.kata.databinding.ActivityMainBinding
 
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as TechKataApplication).appComponent.inject(this)
+        (application as SampleApplication).appComponent.inject(this)
         viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)

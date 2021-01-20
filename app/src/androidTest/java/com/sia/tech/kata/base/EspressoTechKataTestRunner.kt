@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.StrictMode
 import androidx.test.runner.AndroidJUnitRunner
-import com.sia.tech.kata.TechKataApplication
+import com.sia.tech.kata.SampleApplication
 
 class EspressoTechKataTestRunner : AndroidJUnitRunner() {
 
@@ -16,6 +16,6 @@ class EspressoTechKataTestRunner : AndroidJUnitRunner() {
 
     override fun newApplication(cl: ClassLoader, className: String, context: Context): Application {
         RxIdlerController.initialize()
-        return super.newApplication(cl, TechKataApplication::class.java.name, context)
+        return super.newApplication(cl, SampleApplication::class.java.name, context)
     }
 }

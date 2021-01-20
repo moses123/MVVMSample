@@ -2,4 +2,4 @@ include ':app'
 include ':network'
 include ':currency-service'
 
-rootProject.name = "TechKata2020"
+rootProject.name = "MVVMSample"
