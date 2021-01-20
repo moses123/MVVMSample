@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion appConfig.compileSdk
+    buildToolsVersion appConfig.buildTools
+
+    defaultConfig {
+        applicationId "com.sia.tech.kata"
+
+        minSdkVersion appConfig.minSdk
+        targetSdkVersion appConfig.targetSdk
+
+        versionCode appConfig.versionCode
+        versionName appConfig.versionName
+
+        testInstrumentationRunner instrumentationConfig.testInstrumentationRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation project(':currency-service')
+
+    implementation libraries.kotlinStd
+    implementation libraries.androidSupportAppCompat
+    implementation libraries.constraintLayout
+    implementation libraries.dagger
+    implementation libraries.daggerAndroid
+    implementation libraries.lifecycleViewModel
+    implementation libraries.lifecycleLiveData
+    implementation libraries.lifecycleRuntime
+    implementation libraries.lifecycleViewModelState
+    implementation libraries.lifecycleExtension
+    implementation libraries.retrofit
+    implementation libraries.retrofitGsonConverter
+    implementation libraries.rxKotlin
+    implementation libraries.rxAndroid
+    implementation libraries.rxBinding
+
+    kapt compilers.dagger
+    kapt compilers.daggerAndroid
+    kapt compilers.lifecycleCompiler
+
+    androidTestImplementation instrumentationTestLibraries.espressoCore
+    androidTestImplementation instrumentationTestLibraries.espressoIntents
+    androidTestImplementation instrumentationTestLibraries.espressoContrib
+    androidTestImplementation instrumentationTestLibraries.espressoIntents
+    androidTestImplementation instrumentationTestLibraries.rxIdler
+
+    androidTestImplementation instrumentationTestLibraries.uiAutomator
+    androidTestImplementation instrumentationTestLibraries.testButler
+    androidTestImplementation instrumentationTestLibraries.testRunner
+    androidTestImplementation instrumentationTestLibraries.androidxTestExt
+    androidTestImplementation instrumentationTestLibraries.archCore
+    androidTestImplementation instrumentationTestLibraries.okhttpMockWebServer
+    androidTestImplementation instrumentationTestLibraries.rxIdler
+    androidTestImplementation unitTestLibraries.assertj
+
+    androidTestImplementation unitTestLibraries.mockito
+    testImplementation unitTestLibraries.junit
+    testImplementation unitTestLibraries.mockito
+    testImplementation unitTestLibraries.assertj
+    testImplementation unitTestLibraries.coreTesting
+
+
+    testImplementation unitTestLibraries.junit
+    testImplementation unitTestLibraries.mockito
+    testImplementation unitTestLibraries.assertj
+
+    // androidTestImplementation unitTestLibraries.roboElectric
+
+    kaptAndroidTest compilers.dagger
+}
